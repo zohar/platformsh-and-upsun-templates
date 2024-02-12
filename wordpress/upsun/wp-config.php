@@ -85,7 +85,7 @@ $table_prefix  = 'wp_';
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-define( 'WP_DEBUG', false );
+
 $ddev_settings = dirname(__FILE__) . '/wp-config-ddev.php';
 if (is_readable($ddev_settings) && !defined('DB_USER')) {
   require_once($ddev_settings);

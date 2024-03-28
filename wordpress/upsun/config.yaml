@@ -62,9 +62,9 @@ applications:
 
         hooks:
             deploy: |
-                wp cache flush
-                wp core update-db
-                wp cron event run --due-now
+                wp --path=/app/public_html/ cache flush
+                wp --path=/app/public_html/ core update-db
+                wp --path=/app/public_html/ cron event run --due-now
 
         source:
             operations:

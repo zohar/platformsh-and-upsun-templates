@@ -1,0 +1,27 @@
+applications:
+  atuin:
+    stack:
+      - atuin
+
+    web:
+      commands:
+        start: atuin server start
+
+      locations:
+        /:
+          allow: false
+          passthru: true
+
+    relationships:
+      db: "pgsql:postgresql"
+
+    hooks:
+      build: |
+        set -e
+        # Atuin expects config files to exist, but we can't create them at Run time
+        mkdir -p /app/.config/atuin
+        touch /app/.config/atuin/config.toml /app/.config/atuin/server.toml
+
+services:
+  pgsql:
+    type: postgresql:16
